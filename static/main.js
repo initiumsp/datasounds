@@ -1,10 +1,13 @@
 d3.csv("data.csv", function(d) {
     return d;
 }, function(error, data) {
-    data.forEach(function(d) {
+    data.forEach(function(d, index) {
+        console.log(index)
+
         d.year = parseInt(d.year);
         d.temperature = parseFloat(d.temperature);
         d.date = new Date(d.year, 0, 0, 0, 0, 0, 0);
+        d.ind = index;
     });
 
     var years = data.map(function(x) { return x.year; });
@@ -24,16 +27,16 @@ d3.csv("data.csv", function(d) {
 
     var x = d3.scale.linear().range([0, fullWidth]);
     var y = d3.scale.linear().range([height, 0]);
-    var xAxis = d3.svg.axis().scale(x).orient("bottom").tickFormat(function(d) { return "" + d; });
+    var xAxis = d3.svg.axis().scale(x).orient("bottom").tickFormat(function(d) { return "" + data[d].year; });
     var yAxis = d3.svg.axis().scale(y).orient("left");
 
     var area = d3.svg.area()
-        .x(function(d) { return x(d.year); })
+        .x(function(d) { return x(d.ind); })
         .y0(height)
         .y1(function(d) { return y(d.temperature); });
 
     var line = d3.svg.line()
-        .x(function(d) { return x(d.year); })
+        .x(function(d) { return x(d.ind); })
         .y(function(d) { return y(d.temperature); });
 
     var svg = d3.select("body").append("svg")
@@ -41,7 +44,7 @@ d3.csv("data.csv", function(d) {
         .attr("height", height)
         .append("g");
 
-    x.domain(d3.extent(data, function(d) { return d.year; }));
+    x.domain(d3.extent(data, function(d) { return d.ind; }));
     y.domain([20, 30]);
 
     svg.append("path")
@@ -118,7 +121,7 @@ d3.csv("data.csv", function(d) {
             var movingCount = years.length * (fullWidth - width) / fullWidth;
             var pageCount = years.length * (width / fullWidth);
 
-            var movePercent = (fullInterval - msec * pageCount / 2) / (msec * movingCount);
+            var movePercent = (fullInterval - msec * pageCount) / (msec * movingCount);
             if (movePercent >= 1) movePercent = 1;
             if (movePercent <= 0) movePercent = 0;
 
