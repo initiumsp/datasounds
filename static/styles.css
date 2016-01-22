@@ -130,6 +130,9 @@ a[href^="#fnref:"] {
 body {
     color: white;
     background-color: #aaaaaa;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
 }
 
 .centered {
@@ -139,4 +142,32 @@ body {
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
+}
+
+svg {
+  padding: 0;
+  margin: 0
+}
+
+.area {
+  fill: blue;
+  opacity: 0.2;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.dot {
+  fill: white;
+}
+
+.x.axis {
+  fill: white;
+}
+
+.x.axis path {
+  display: none;
 }
