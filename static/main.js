@@ -6,20 +6,21 @@ d3.csv("data.csv", function(d) {
     var midis = rows.map(function(x) {
         return Math.floor((x - min) * (30.0 / (max - min)) + 50);
     });
-
-    console.log(midis);
+    var msec = timbre.timevalue("bpm120 l8");
 
     timbre.rec(function(output) {
-        var msec  = timbre.timevalue("bpm120 l8");
+
         var synth = T("OscGen", {env:T("perc", {r:msec, ar:true})});
 
-        T("interval", {interval:msec}, function(count) {
+        var interval = T("interval", {interval:msec}, function(count) {
             if (count < midis.length) {
                 synth.noteOn(midis[count], 100);
             } else {
                 output.done();
             }
-        }).start();
+        })
+
+        interval.start();
 
         output.send(synth);
     }).then(function(result) {
@@ -31,8 +32,28 @@ d3.csv("data.csv", function(d) {
 
         R.pitch = (duration * (num - 1)) / (duration * num);
 
+        var panL = T("pan", {pos:-0.6}, L);
+        var panR = T("pan", {pos:+0.6}, R)
         T("delay", {time:"bpm120 l16", fb:0.1, cross:true},
-          T("pan", {pos:-0.6}, L), T("pan", {pos:+0.6}, R)
+          panL, panR
          ).play();
+
+        var ticks = 0;
+
+        function animate() {
+            console.log(ticks);
+
+            /* Add your code here
+               Something you may want to use:
+
+               midis: array, midis[ticks] corresponds to current midi sound,
+                             ranging from 50-80.
+            */
+
+            ticks += 1;
+        }
+
+        setInterval(animate, msec);
     })
 });
+
