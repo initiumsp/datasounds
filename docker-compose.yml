@@ -4,6 +4,6 @@ web:
   expose:
     - "8080"
   environment:
-    VIRTUAL_HOST: datasounds.case.beyond.codes
-    LETSENCRYPT_HOST: datasounds.case.beyond.codes
+    VIRTUAL_HOST: datasounds.id.hn
+    LETSENCRYPT_HOST: datasounds.id.hn
     LETSENCRYPT_EMAIL: hi@beyond.codes
