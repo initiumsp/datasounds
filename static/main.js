@@ -1,6 +1,9 @@
 d3.csv("data.csv", function(d) {
-    return d.temperature;
+    return d;
 }, function(error, rows) {
+    var years = rows.map(function(x) { return x.year; });
+    var rows = rows.map(function(x) { return parseFloat(x.temperature); });
+
     var min = Math.min.apply(null, rows);
     var max = Math.max.apply(null, rows);
     var midis = rows.map(function(x) {
@@ -38,22 +41,35 @@ d3.csv("data.csv", function(d) {
           panL, panR
          ).play();
 
-        var ticks = 0;
+        var tickIndex = 0;
+        var lastTime = Date.now();
 
         function animate() {
-            console.log(ticks);
-
-            /* Add your code here
-               Something you may want to use:
-
-               midis: array, midis[ticks] corresponds to current midi sound,
-                             ranging from 50-80.
-            */
-
-            ticks += 1;
+            var nowTime = Date.now();
+            var interval = nowTime - lastTime;
+            if (interval >= msec) {
+                tick(tickIndex);
+                tickIndex += 1;
+                lastTime += msec;
+            }
+            window.requestAnimationFrame(animate);
         }
 
-        setInterval(animate, msec);
+        function tick(ticks) {
+            if (ticks >= midis.length) return;
+
+            console.log(years[ticks]);
+
+            var r = Math.round((midis[ticks] - 50) * 152 / 30);
+            var g = Math.round((midis[ticks] - 50) * 27 / 30);
+            var b = Math.round((midis[ticks] - 50) * 30 / 30);
+
+            var rgbStr = "rgb(" + r + "," + g + "," + b + ")"
+            $("body").css("background-color", rgbStr);
+            $("#title").text("Year " + years[ticks]);
+        }
+
+        animate();
     })
 });
 
