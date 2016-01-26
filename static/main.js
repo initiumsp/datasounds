@@ -1,6 +1,13 @@
+var played = false;
 $(".play").click(function() {
-    play();
-    $(".play").fadeOut();
+    if (played) {
+        window.location.reload();
+    } else {
+        play();
+        $(".play").text("Replay");
+        $(".play").fadeOut();
+        played = true;
+    }
 });
 
 function play() {
@@ -53,19 +60,18 @@ function play() {
         x.domain(d3.extent(data, function(d) { return d.ind; }));
         y.domain([20, 30]);
 
-        svg.append("path")
-            .datum(data)
-            .attr("class", "area")
-            .attr("d", area);
+        // svg.append("path")
+        //     .datum(data)
+        //     .attr("class", "area")
+        //     .attr("d", area);
+
+        var widthOffsetBegin = width / 2;
+        var widthOffset = widthOffsetBegin;
 
         svg.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0, " + (height - 50) + ")")
             .call(xAxis);
-
-        svg.append("g")
-            .attr("class", "y axis")
-            .call(yAxis);
 
         svg.append("path")
             .datum(data)
@@ -79,6 +85,8 @@ function play() {
             .attr("cx", line.x())
             .attr("cy", line.y())
             .attr("r", 3.5);
+
+        svg.attr("transform", "translate(" + widthOffset + ", 0)");
 
         timbre.rec(function(output) {
 
@@ -124,22 +132,23 @@ function play() {
                     lastTime += msec;
                 }
 
-                var movingCount = years.length * (fullWidth - width) / fullWidth;
-                var pageCount = years.length * (width / fullWidth);
+                var movePercent = fullInterval / (250 * years.length);
+                if (movePercent > 1) movePercent = 1;
 
-                var movePercent = (fullInterval - msec * pageCount) / (msec * movingCount);
-                if (movePercent >= 1) movePercent = 1;
-                if (movePercent <= 0) movePercent = 0;
+                widthOffset = widthOffsetBegin - 5 * width * movePercent;
 
-                svg.attr("transform", "translate(-" + (fullWidth - width) * movePercent + ",0)");
+                svg.attr("transform", "translate(" + widthOffset + ",0)");
 
                 window.requestAnimationFrame(animate);
             }
 
             function tick(ticks) {
-                if (ticks >= midis.length) return;
+                if (ticks >= midis.length) {
+                    $(".play").fadeIn();
+                    return;
+                };
 
-                console.log(years[ticks]);
+                console.log(data[ticks].temperature);
 
                 var r = Math.round((midis[ticks] - 50) * 152 / 30);
                 var g = Math.round((midis[ticks] - 50) * 27 / 30);
@@ -148,6 +157,7 @@ function play() {
                 var rgbStr = "rgb(" + r + "," + g + "," + b + ")"
                 $("body").css("background-color", rgbStr);
                 $("#title").text("Year " + years[ticks]);
+
             }
 
             animate();
