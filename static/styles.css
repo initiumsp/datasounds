@@ -62,7 +62,7 @@ h1, h2, h3, h4, h5, h6 {
     text-rendering: optimizeLegibility; }
 
 h1 {
-    font-size: 2rem; }
+    font-size: 3rem; }
 
 h2 {
     margin-top: 1rem;
@@ -135,12 +135,20 @@ body {
     overflow: hidden;
 }
 
-.centered {
+.top {
     text-align: center;
     position: fixed;
-    top: 50%;
+    top: 30%;
     left: 50%;
     /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+
+.bottom {
+    position: fixed;
+    text-align: center;
+    left: 50%;
+    bottom: 35%;
     transform: translate(-50%, -50%);
 }
 
@@ -157,7 +165,21 @@ body {
 
 svg {
     padding: 0;
-    margin: 0
+    margin: 0;
+    margin-top: -10%;
+}
+
+#temp {
+    font-size: 60px;
+}
+
+.cutLine {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 50%;
+    border-left: red solid 1px;
 }
 
 .area {
@@ -167,7 +189,7 @@ svg {
 
 .line {
     fill: none;
-    stroke: steelblue;
+    stroke: #4C4C4C;
     stroke-width: 1.5px;
 }
 

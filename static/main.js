@@ -4,7 +4,7 @@ $(".play").click(function() {
         window.location.reload();
     } else {
         play();
-        $(".play").text("Replay");
+        $(".play").text("重播");
         $(".play").fadeOut();
         played = true;
     }
@@ -149,6 +149,8 @@ function play() {
                 };
 
                 console.log(data[ticks].temperature);
+                tempNumber = data[ticks].temperature
+                // $("#temp").text(tempNumber.toFixed(2) + "°C");
 
                 var r = Math.round((midis[ticks] - 50) * 152 / 30);
                 var g = Math.round((midis[ticks] - 50) * 27 / 30);
@@ -156,7 +158,7 @@ function play() {
 
                 var rgbStr = "rgb(" + r + "," + g + "," + b + ")"
                 $("body").css("background-color", rgbStr);
-                $("#title").text("Year " + years[ticks]);
+                $("#title").text(tempNumber.toFixed(2) + "°C");
 
             }
 
