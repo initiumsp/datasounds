@@ -1,0 +1,23 @@
+{
+  "name": "datasounds",
+  "main": "index.js",
+  "version": "0.0.1",
+  "authors": [
+    "Initium Lab"
+  ],
+  "description": "Internal data representation of sounds.",
+  "license": "All Rights Reserved",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "d3": "~3.5.15",
+    "timbre": "~14.11.25"
+  }
+}

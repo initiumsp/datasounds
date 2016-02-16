@@ -1,9 +1,0 @@
-web:
-  build: .
-  restart: always
-  expose:
-    - "8080"
-  environment:
-    VIRTUAL_HOST: datasounds.id.hn
-    LETSENCRYPT_HOST: datasounds.id.hn
-    LETSENCRYPT_EMAIL: hi@beyond.codes

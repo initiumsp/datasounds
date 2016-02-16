@@ -5,15 +5,14 @@ This is a sound visualization of average temperatures in Hong Kong in the past
 
 ## Deploy it yourself
 
-You don't actually need to deploy it. Just put the `static` folder under a HTTP
-server. However, the repo do contain a Docker deployment toolchain, if you want
-to use:
+You need to use `bower` to install the necessary dependencies first. After that,
+use `npm` to install the Node.js dependencies. Wait patiently.
 
-```bash
-docker-compose build
-docker-compose up
-```
+This project is internal, so only people with specific rights could deploy. If
+you have access to the internal showcase server, run `grunt deploy:staging`. If
+you have access to the Github page repository, which is used for "production
+deployment", run `grunt deploy:gh-pages`.
 
 ## License
 
-The code is released under MIT License.
+Copyright 2016 Initium Lab. All rights Reserved.
