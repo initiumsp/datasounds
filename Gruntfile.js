@@ -9,7 +9,7 @@ module.exports = function(grunt) {
                 base: 'static',
                 branch: 'gh-pages',
                 // by default use the method (HTTPS/ SSH) when you clone
-                repo: 'https://github.com/initiumlab/datasounds.git'
+                repo: "git@github.com:initiumlab/datasounds.git"
             },
             src: '**/*'
         },
