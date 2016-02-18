@@ -14,6 +14,7 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="vendor/toddish-popup/assets/css/popup.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:700">
     </head>
 
@@ -29,10 +30,22 @@
       </div>
 
       <div class="copyright">
-          <p>Copyright 2016 Initium Lab. All Rights Reserved.</p>
+          <p><a href="#inline" class="popup about">About</a></p>
       </div>
 
+      <div id="inline" style="display:none">
+          <p><b>The Project</b></p>
+          <p>This is 131 years of average temperature of Hong Kong put in sound, built as a hackathon project.</p>
+          <p><b>The Data</b></p>
+          <p>Every note you hear in this song represents the average temperature of a certain year in Hong Kong. The dataset, downloaded from <a href="http://www.hko.gov.hk/cis/dailyExtract_e.htm?y=2016&m=01">daily extract of meteorological obsearvations by Hong Kong Observatory</a>, contains daily mean temperature data since 1885 to 2015, and based on this we calculated the annual average temperatures with Google Sheets. Due to warfares during 1940 to 1946, weather information in this period of time were not recorded, thus this part of data were missing.</p>
+          <p><b>Acknowledgement</b></p>
+          <p>Thanks to the following open source projects, which Data Sounds is built upon: <a href="https://d3js.org/">d3.js</a>, <a href="https://jquery.com/">jQuery</a>, <a href="https://mohayonao.github.io/timbre.js/">timbre.js</a>, and <a href="http://docs.toddish.co.uk/popup/">Popup.js</a>.</p>
+          <p><b>Copyright</b></p>
+          <p>Copyright 2016 Initium Lab. All Rights Reserved. <br /><small>However, a version with free license is indeed available, <a href="https://git.beyond.codes/datasounds/">fork it there</a>.</small></p>
+	    </div>
+
       <script src="vendor/jquery/dist/jquery.min.js"></script>
+      <script src="vendor/toddish-popup/assets/js/jquery.popup.min.js"></script>
       <script src="vendor/d3/d3.min.js"></script>
       <script src="vendor/timbre/timbre.dev.js"></script>
       <script src="main.js"></script>

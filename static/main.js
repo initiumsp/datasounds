@@ -10,6 +10,10 @@ $(".play").click(function() {
     }
 });
 
+$(document).ready(function() {
+    $(".popup").popup();
+})
+
 function play() {
     d3.csv("data.csv", function(d) {
         return d;
