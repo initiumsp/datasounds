@@ -1,70 +1,66 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 
-    <head>
-        <link href="http://gmpg.org/xfn/11" rel="profile">
-        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<head>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-        <!-- Enable responsiveness on mobile devices-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-        <title>
-            Data Sounds
-        </title>
+    <title>
+        Data Sounds
+    </title>
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="vendor/toddish-popup/assets/css/popup.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:700">
-    </head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="vendor/toddish-popup/assets/css/popup.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:700">
+</head>
 
-  <body style="color: white; background-color: black;">
-      <div class = "cutLine"></div>
-      <div class="top">
-        <h1 id="title">香港氣溫狂想曲</h1>
-        <p>131年香港平均氣溫數據可聽化作品</p>
-      </div>
-      <div class="bottom">
-        <div>&nbsp;<span class="play">播放</span>&nbsp;</div>
-        <div id="temp"></div>
-      </div>
+<body style="color: white; background-color: black;">
+<div class = "cutLine"></div>
+<div class="top">
+    <h1 id="title">香港氣溫狂想曲</h1>
+    <p>131年香港平均氣溫數據可聽化作品</p>
+</div>
+<div class="bottom">
+    <div>&nbsp;<span class="play">播放</span>&nbsp;</div>
+    <div id="temp"></div>
+</div>
 
-      <div class="copyright">
-          <p><a href="#inline" class="popup about">About</a></p>
-      </div>
+<div class="copyright">
+    <p><a href="#inline" class="popup about">About</a></p>
+</div>
 
-      <div id="inline" style="display:none">
-          <p><b>The Project</b></p>
-          <p>This is 131 years of average temperature of Hong Kong put in sound, built as a hackathon project.</p>
-          <p><b>The Data</b></p>
-          <p>Every note you hear in this song represents the average temperature of a certain year in Hong Kong. The dataset, downloaded from <a href="http://www.hko.gov.hk/cis/dailyExtract_e.htm?y=2016&m=01">daily extract of meteorological obsearvations by Hong Kong Observatory</a>, contains daily mean temperature data since 1885 to 2015, and based on this we calculated the annual average temperatures with Google Sheets. Due to warfares during 1940 to 1946, weather information in this period of time were not recorded, thus this part of data were missing.</p>
-          <p><b>Acknowledgement</b></p>
-          <p>Thanks to the following open source projects, which Data Sounds is built upon: <a href="https://d3js.org/">d3.js</a>, <a href="https://jquery.com/">jQuery</a>, <a href="https://mohayonao.github.io/timbre.js/">timbre.js</a>, and <a href="http://docs.toddish.co.uk/popup/">Popup.js</a>.</p>
-          <p><b>Copyright</b></p>
-          <p>Copyright 2016 Initium Lab. All Rights Reserved. </p>
-	    </div>
+<div id="inline" style="display:none">
+    <p><b>The Project</b></p>
+    <p>This is 131 years of average temperature of Hong Kong put in sound, built as a hackathon project.</p>
+    <p><b>The Data</b></p>
+    <p>Every note you hear in this song represents the average temperature of a certain year in Hong Kong. The dataset, downloaded from <a href="http://www.hko.gov.hk/cis/dailyExtract_e.htm?y=2016&m=01">daily extract of meteorological obsearvations by Hong Kong Observatory</a>, contains daily mean temperature data since 1885 to 2015, and based on this we calculated the annual average temperatures with Google Sheets. Due to warfares during 1940 to 1946, weather information in this period of time were not recorded, thus this part of data were missing.</p>
+    <p><b>Acknowledgement</b></p>
+    <p>Thanks to the following open source projects, which Data Sounds is built upon: <a href="https://d3js.org/">d3.js</a>, <a href="https://jquery.com/">jQuery</a>, <a href="https://mohayonao.github.io/timbre.js/">timbre.js</a>, and <a href="http://docs.toddish.co.uk/popup/">Popup.js</a>.</p>
+    <p><b>Copyright</b></p>
+    <p>Copyright 2016 Initium Lab. All Rights Reserved. </p>
+</div>
 
-      <script src="vendor/jquery/dist/jquery.min.js"></script>
-      <script src="vendor/toddish-popup/assets/js/jquery.popup.min.js"></script>
-      <script src="vendor/d3/d3.min.js"></script>
-      <script src="vendor/timbre/timbre.dev.js"></script>
-      <script src="main.js"></script>
+<script src="vendor/jquery/dist/jquery.min.js"></script>
+<script src="vendor/toddish-popup/assets/js/jquery.popup.min.js"></script>
+<script src="vendor/d3/d3.min.js"></script>
+<script src="vendor/timbre/timbre.dev.js"></script>
+<script src="main.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      <!-- Piwik -->
-      <script type="text/javascript">
-       var _paq = _paq || [];
-       _paq.push(['trackPageView']);
-       _paq.push(['enableLinkTracking']);
-       (function() {
-           var u="//piwik.beyond.codes/";
-           _paq.push(['setTrackerUrl', u+'piwik.php']);
-           _paq.push(['setSiteId', 13]);
-           var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-           g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-       })();
-      </script>
-      <noscript><p><img src="//piwik.beyond.codes/piwik.php?idsite=13" style="border:0;" alt="" /></p></noscript>
-      <!-- End Piwik Code -->
+    ga('create', 'UA-66625644-19', 'auto');
+    ga('send', 'pageview');
 
-  </body>
+</script>
+
+
+
+</body>
 </html>
